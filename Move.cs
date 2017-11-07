@@ -18,16 +18,10 @@ public class Move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {//called every frame of the game
-                    //Vector - a set of points
-                    //Vector3 - a set of 3 points (x,y,x)
-                    // Vector3 newPosition = new Vector3(transform.position.x+speed *Time.deltaTime, transform.position.y, transform.position.z);
-        Vector3 newPosition = transform.position;
+            
+        transform.position += new Vector3(speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0, 0);
+
+        transform.position += new Vector3(0, speed * Input.GetAxis("Vertical") * Time.deltaTime, 0);
         
-
-        newPosition += new Vector3(speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0, 0);
-
-        newPosition += new Vector3(0, speed * Input.GetAxis("Vertical") * Time.deltaTime, 0);
-
-        transform.position = newPosition;
 	}
 }
