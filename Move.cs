@@ -10,18 +10,15 @@ public class Move : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {//called when object is created
-		
-	}
+        rb = GetComponent<Rigidbody>();
+    }
 	
 	// Update is called once per frame
 	void Update () {//called every frame of the game
-        rb = GetComponent<Rigidbody>();
-        
-        transform.position += new Vector3(speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0, 0);
-
-        transform.position += new Vector3(0, speed * Input.GetAxis("Vertical") * Time.deltaTime, 0);
+      
         rb.MovePosition(transform.position + 
-            new Vector3(speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0, 0) + 
-            new Vector3(0, speed * Input.GetAxis("Vertical") * Time.deltaTime, 0));
+            new Vector3(Input.GetAxis("Horizontal"),
+            Input.GetAxis("Vertical"),
+            0) * speed * Time.deltaTime);
 	}
 }
